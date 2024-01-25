@@ -58,7 +58,12 @@ Finally, SLIC performed mediocrely in our code in terms of Runtime, which may be
   <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/a65e87e195c43b79f2bdb6aefccd6e62007bcaf1/UE.png" width="31%" /> 
 </p>
 
-At a superpixel number of 2000, we achieve a BR of 0.65 and a UE of 0.026. When we segmented each image, the average running time was 16.4 seconds.
+At a superpixel number of 2000, we achieve a BR of 0.65 and a UE of 0.026. 
+<p float="left">
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/939ae3b89c00b7e5cad3e7458bda163fa3596d4d/runtime.png" width="50%" />
+</p>
+
+When we segmented each image, the average running time was 16.4 seconds.
 
 ###  Comparison with Robin's SLIC
 We then compared our results with RobinSLIC, a method from a paper called Bilateral K-Means for Superpixel Computation. There are three main changes in RobinSLIC: gradient correction at initialisation, bilateral distances, connectivity enforcement, and runtime optimisation.
