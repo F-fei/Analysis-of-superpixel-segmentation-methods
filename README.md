@@ -1,5 +1,8 @@
 # Analysis-of-superpixel-segmentation-methods
 ## Superpixel extraction methods(SLIC)
+
+> This project has been created as a learning endeavor to explore the methodologies of superpixel segmentation, with a special focus on the Simple Linear Iterative Clustering (SLIC) method. The learning process focussed on the SLIC approach in the published article by Achanta et al. and a range of existing developments. It aims to provide an in-depth understanding and practical implementation of this technique, which is pivotal in the field of computer vision.
+> 
 ## Table of Contents  
 1. [Introduction](#introduction) 
 2. [Methodology](#methodology) 
@@ -124,6 +127,12 @@ Part 4 Processing of the dataset to be used
 
 Part 5 Quantitative Evaluation
 
+> Define the step size, colour weights, and number of superpixels as needed:
+     
+    step = 2
+    m = 40
+    nr_superpixels = 1000
+    
 **If you only want to try to generate superpixel segmented images, run: part 1 + part 2 + Execute the main function**
 
 **If you want to quantitatively evaluate SLIC or test it on different datasets run: part 1 + part 3 + Execute the main function + part 4 + part 5**
