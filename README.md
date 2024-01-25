@@ -1,5 +1,6 @@
 # Analysis-of-superpixel-segmentation-methods
 ## Superpixel extraction methods(SLIC)
+
 ## Introduction
 In the field of computer vision, superpixels have been widely used as an effective means of image segmentation in various image processing and analysis tasks. 
 
@@ -31,7 +32,9 @@ In this experiment we used the Berkeley Segmentation Dataset 500 (BSDS500). The 
   <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/8a6ea0d1499bed2fd719680c7011d075722bb925/result2.jpg" width="30%" /> 
 </p>
 Through our eyes, we can see that pixels of similar colours and similar features are almost nicely assigned to the same superpixel. But is this really perfect? For this reason, we did a quantitative evaluation.
+
 ## Evaluation
+
 ### Évaluations quantitatives
 In the performance evaluation of superpixel extraction, the SLIC method performs well in Boundary Recall, effectively detecting most of the true edges on the image boundary. This metric reflects the SLIC method's ability to maintain the integrity of the image boundary, which is particularly important for applications that require accurate boundary segmentation. 
 
@@ -51,16 +54,68 @@ At a superpixel number of 2000, we achieve a BR of 0.65 and a UE of 0.026. When 
 
 ###  Comparison with Robin's SLIC
 We then compared our results with RobinSLIC, a method from a paper called Bilateral K-Means for Superpixel Computation. There are three main changes in RobinSLIC: gradient correction at initialisation, bilateral distances, connectivity enforcement, and runtime optimisation.
-
-【】
+<p float="left">
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/8c5da0ebeb834a56b7f6323a09d3ef83ce968c82/result3.jpg" width="30%" />
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/8c5da0ebeb834a56b7f6323a09d3ef83ce968c82/result3_1.jpg" width="31%" /> 
+</p>
 We can look at these two results and overall, there is not much difference, but in some details, RobinSLIC is better. And it is even more surprising in the quantitative assessment.
-【】
+
+Boundary Recall
+<p float="left">
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/36688799cf8f9d345ecffd469958744c166b29f7/BR_vs.png" width="50%" />
+</p>
+1-Undersegmentation Error
+<p float="left">
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/36688799cf8f9d345ecffd469958744c166b29f7/UE_vs.png" width="50%" />
+
+Runtime
+  <p float="left">
+  <img src="https://github.com/F-fei/Analysis-of-superpixel-segmentation-methods/blob/36688799cf8f9d345ecffd469958744c166b29f7/runtime_vs.png" width="50%" />
+  
 In the table of BR we can see that when the number of superpixels is 2000, the difference in BR between our method and Ronbin's method is 0.21, and the difference increases as the number of superpixels increases; In the table of UE we can see that when the number of hyperpixels is 2000, the difference between the UE of our method and Ronbin's method is 0.054 and the difference decreases as the number of hyperpixels increases.But in terms of runtime, Robin's segmentation is particularly fast. We picked ten images to compare, and Robin was on average 16 seconds faster than our SLIC. I think this may be due to the fact that I'm running the code on Googlecolab.
 
 ## Conclusion
 We have carried out superpixel segmentation with interesting results, for example, acceptable values for BR, UE and runtime. However, Overall, SLIC_Robin performs better than Notre_SLIC, especially in the Runtime.
 
 To work on the future, we need to improve the efficiency of our algorithm, especially in the Runtime. Then we need to focus on the details that can be improved, the clustering method, the distribution of pixels, and so on. We also need to focus on using SLIC in conjunction with other tools, such as deep learning.
+
+## Code Usage Suggestions
+
+> Our code is written in the python computer language and you can copy it directly into your Googlecolab and use it! We encourage downloading the dataset to be used well in advance, and our code adapts perfectly to BSDS500.
+
+### GettingStarted
+Import the necessary libraries and tools and mount Google drive.
+
+    import cv2
+    import os
+    import time
+    import scipy.io
+    import numpy as np
+    from skimage import measure
+    from collections import deque
+    from google.colab import drive
+    import matplotlib.pyplot as plt
+    from skimage.segmentation import find_boundaries
+    drive.mount('/content/drive')
+
+### Code Modules
+Our code is divided into 5 parts:
+
+Part 1 Definition of SLIC class
+
+Part 2 Generation of single superpixel segmentation image
+
+Part 3 Batch generation of superpixel segmentation images and segmentation markers
+
+Part 4 Processing of the dataset to be used
+
+Part 5 Quantitative Evaluation
+
+**If you only want to try to generate superpixel segmented images, run: part 1 + part 2 + Execute the main function**
+
+**If you want to quantitatively evaluate SLIC or test it on different datasets run: part 1 + part 3 + Execute the main function + part 4 + part 5**
+
+> Note that if you intend to use a dataset other than BSDS500, make sure that it contains the image and the ground-truth (containing the true segmentation markers) file corresponding to the filename , and rework the code in part 4 according to the structure of the true segmentation markers file.
 
 ## Reference
 
@@ -70,4 +125,4 @@ To work on the future, we need to improve the efficiency of our algorithm, espec
 
 [3] Jampani, V., Sun, D., Liu, M.-Y., Yang, M.-H., & Kautz, J. (2018). Superpixel Sampling Networks. In Computer Vision – ECCV 2018: 15th European Conference, Munich, Germany, September 8–14, 2018, Proceedings, Part VII (pp. 363–380). doi:10.1007/978-3-030-01234-2_22
 
-[4] D. Martin and C. Fowlkes and D. Tal and J. Malik, A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics, Proc. 8th Int'l Conf. Computer Vision, 2001, July, 2, 416--423
+[4] Berkeley Segmentation Dataset 500 (BSDS500),D. Martin and C. Fowlkes and D. Tal and J. Malik, A Database of Human Segmented Natural Images and its Application to Evaluating Segmentation Algorithms and Measuring Ecological Statistics, Proc. 8th Int'l Conf. Computer Vision, 2001, July, 2, 416--423
