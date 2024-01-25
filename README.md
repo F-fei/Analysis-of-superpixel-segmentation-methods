@@ -1,6 +1,14 @@
 # Analysis-of-superpixel-segmentation-methods
 ## Superpixel extraction methods(SLIC)
-
+## Table of Contents  
+1. [Introduction](#introduction) 
+2. [Methodology](#methodology) 
+3. [Data](#data) 
+4. [Result](#result) 
+5. [Evaluation](#evaluation) 
+6. [Conclusion](#conclusion) 
+7. [Code Usage Suggestions](#code-usage-suggestions) 
+9. [Reference](#reference)
 ## Introduction
 In the field of computer vision, superpixels have been widely used as an effective means of image segmentation in various image processing and analysis tasks. 
 
